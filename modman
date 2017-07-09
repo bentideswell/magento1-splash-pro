@@ -1,0 +1,7 @@
+app/code/community/Fishpig/AttributeSplashPro						app/code/community/Fishpig/AttributeSplashPro
+app/design/adminhtml/default/default/layout/splash.xml			app/design/adminhtml/default/default/layout/splash.xml
+app/design/adminhtml/default/default/template/splash			app/design/adminhtml/default/default/template/splash
+app/design/frontend/base/default/layout/splash.xml					app/design/frontend/base/default/layout/splash.xml
+app/design/frontend/base/default/template/splash					app/design/frontend/base/default/template/splash
+app/etc/modules/Fishpig_AttributeSplashPro.xml						app/etc/modules/Fishpig_AttributeSplashPro.xml
+var/connect/FishPig_Splash_Pro.xml											var/connect/FishPig_Splash_Pro.xml

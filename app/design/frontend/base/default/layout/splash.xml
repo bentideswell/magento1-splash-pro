@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<layout>
+	<!--
+	/**
+	 * Splash Page View
+	 */
+	 -->
+	 <splash_page_view>
+		 <label>Splash Page</label>
+		 <reference name="left">
+			 <block type="splash/layer_view" name="catalog.leftnav" before="-" template="catalog/layer/view.phtml">
+				<block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+			 </block>
+		 </reference>
+	 	<reference name="content">
+	 		<block type="splash/page_view" name="splash.page" template="splash/page/view.phtml">
+	 			<block type="catalog/product_list" name="splash.page.products" as="product_list" template="catalog/product/list.phtml">
+					<block type="core/text_list" name="product_list.name.after" as="name.after" />
+					<block type="core/text_list" name="product_list.after" as="after" />
+					<block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+						<block type="page/html_pager" name="product_list_toolbar_pager"/>
+					</block>
+					<action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+	 			</block>
+	 		</block>
+	 	</reference>
+	 </splash_page_view>
+</layout>

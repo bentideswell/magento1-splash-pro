@@ -1,0 +1,98 @@
+##
+# FishPig's Attribute Splash Pro
+# http://fishpig.co.uk/attribute-splash-pro.html
+##
+
+17/02/2016 - 1.2.4.11
+- Fixed 'Undefined variable: options' notice.
+
+20/01/2016 - 1.2.4.10
+- Fixed ACL issue.
+
+29/09/2015 - 1.2.4.7
+- Fixed ' Fatal error: Class 'Fishpig_AttributeSplash_Block_Adminhtml_Page_Edit_Tab_Abstract' not found' error message.
+
+25/09/2015 - 1.2.4.6
+- Added 'Design' tab to Admin
+
+18/09/2015 - 1.2.4.5
+- Added ability to filter products by 'new_from_date' and 'new_to_date'.
+
+30/07/2015 - 1.2.4.4
+- This update fixes the ACL issue present when using Magento 1.9.2.0. If you get an 'Access Denied' message when viewing the SmartTabs admin page (even after logging out and logging back in) and are using Magento 1.9.2.0, upgrading to this version will fix that issue.
+
+24/06/2015 - 1.2.4.2
+- Fixed SQL issue
+
+23/04/2015 - 1.2.4.1
+- Integrated with Magento XML sitemap
+
+23/09/2014 - 1.2.4.0
+- Removed price filters
+
+06/06/2014 - 1.2.3.2
+- Added fix for Magento 1.9 rwd package
+
+22/04/2014 - 1.2.3.0
+- Temporarily disabled the SeoSuiteUltimate integration
+
+19/03/2014 - 1.2.2.0
+- Fixed issue when filtering by multiple categories and using the AND operator
+
+10/03/2014 - 1.2.1.0
+- Small fix that stops layered navigation from disappearing
+
+04/03/2014 - 1.2.0.0
+- Added option to hide/show filtered attribute in layered navigation. Defaults to hide
+- Added option to apply filter to associated simple products or parent products (default).
+
+21/01/2014 - 1.1.7.0
+- Added addStatusFilter method to page collection
+
+20/01/2014 - 1.1.6.0
+- Fixed price filter error
+- Fixed error that stopped filters from displaying correctly for some splash pages
+
+26/07/2013 - 1.1.4.0
+- Fixed the no products problem when using a category filter that isn't available in all scopes
+
+24/07/2013 - 1.1.3.0
+- Fixed problem with images not appearing in description and short description
+
+24/07/2013 - 1.1.2.0
+- Fixed the no products problem when using a category filter that isn't available in all scopes
+
+22/07/2013 - 1.1.1.1
+- Fixed trailing slash URL suffix 404 error
+
+13/07/2013 - 1.1.1.0
+- Fixed single store Adminhtml issue
+
+18/06/2013 - 1.1.0.2
+- Added category breadcrumbs when using a single category filter
+
+18/06/2013 - 1.1.0.1
+- Fixes title suffix issue
+
+13/06/2013 - 1.1.0.0
+- Fixed flat catalog issue
+
+23/05/2013 - 1.0.0.19
+- Added new feature that set used_in_product_listing to 1 for attributes used in Splash pages
+
+23/05/2013 - 1.0.0.18
+- Added Adminhtml fix for multistore
+
+21/05/2013 - 1.0.0.16
+- Remove attributes from layered navigation that are used in the Splash Page
+
+10/05/2013 - 1.0.0.15
+- Added new feature that stops Amasty_Shopby breaking Splash Pro Pages
+
+07/05/2013 - 1.0.0.14
+- Add layout_update_xml field. This allows you to customise the layout from the Magento Admin for each Splash Pro Page
+
+29/04/2013 - 1.0.0.12
+- Added support for multiselect attributes
+- Added support for Magento 1.5.1.0 and earlier
+- Added support for session messages
