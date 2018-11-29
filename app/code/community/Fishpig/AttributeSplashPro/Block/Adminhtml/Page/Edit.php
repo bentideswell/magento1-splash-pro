@@ -36,13 +36,13 @@ class Fishpig_AttributeSplashPro_Block_Adminhtml_Page_Edit  extends Mage_Adminht
 	 */
     protected function _prepareLayout()
     {
-        parent::_prepareLayout();
+      parent::_prepareLayout();
 
-        if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
-            $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
-        }
-        
-        return $this;
+      if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+        $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+      }
+      
+      return $this;
     }
     
     /**

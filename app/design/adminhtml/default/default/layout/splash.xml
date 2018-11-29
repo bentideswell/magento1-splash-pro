@@ -9,6 +9,9 @@
 		<reference name="content">
 			<block type="splash/adminhtml_page" name="splash.page" />
 		</reference>
+		<reference name="before_body_end">
+			<block type="adminhtml/template" name="splash.page.grid.js" template="splash/page/grid/js.phtml" />
+		</reference>
 	</adminhtml_splash_index>
 	<!--
 	/**
@@ -24,7 +27,7 @@
 			<block type="splash/adminhtml_page_edit" name="splash.page" />
 		</reference>
 		<reference name="before_body_end">
-			<block type="adminhtml/template" name="splash.page.js" template="splash/page/js.phtml" />
+			<block type="adminhtml/template" name="splash.page.edit.js" template="splash/page/edit/js.phtml" />
 		</reference>
 	</adminhtml_splash_edit>
 </layout>

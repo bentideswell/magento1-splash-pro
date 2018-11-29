@@ -15,11 +15,19 @@ class Fishpig_AttributeSplashPro_Block_Adminhtml_Page extends Mage_Adminhtml_Blo
 	 */
 	public function __construct()
 	{	
+		$this->_addButton('import', array(
+			'label'     => 'Import CSV',
+			'onclick'   => 'FPSplashPro_importOpen();',
+			'class'     => '',
+		));
+		
 		parent::__construct();
 		
 		$this->_controller = 'adminhtml_page';
 		$this->_blockGroup = 'splash';
 		$this->_headerText = $this->__('Splash:') . ' ' . $this->__('Manage Pages');
 		$this->_addButtonLabel = $this->__('Add New Page');
+		
+
 	}
 }

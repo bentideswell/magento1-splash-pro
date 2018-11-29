@@ -17,8 +17,7 @@ class Fishpig_AttributeSplashPro_Block_Adminhtml_Page_Edit_Tab_Content extends M
 	{
 		$form = new Varien_Data_Form();
 
-        $form->setHtmlIdPrefix('splash_')
-        	->setFieldNameSuffix('splash');
+    $form->setHtmlIdPrefix('splash_')->setFieldNameSuffix('splash');
         
 		$this->setForm($form);
 		
@@ -27,19 +26,21 @@ class Fishpig_AttributeSplashPro_Block_Adminhtml_Page_Edit_Tab_Content extends M
 			'class' => 'fieldset-wide',
 		));
 
-		$htmlConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(array(
-			'add_widgets' => false,
-			'add_variables' => false,
-			'add_image' => false,
-			'files_browser_window_url' => $this->getUrl('adminhtml/cms_wysiwyg_images/index')
-		));
 
-		foreach(array( 'short_description' => 'Short Description', 'description' => 'Description') as $attribute => $label) {
+
+		foreach(array('short_description' => 'Short Description', 'description' => 'Description') as $attribute => $label) {
+			$htmlConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(array(
+				'add_widgets' => false,
+				'add_variables' => false,
+				'add_image' => false,
+				'files_browser_window_url' => $this->getUrl('adminhtml/cms_wysiwyg_images/index')
+			));
+		
 			$fieldset->addField($attribute, 'editor', array(
-				'name' => $attribute,
-				'label' => $this->helper('adminhtml')->__($label),
-				'title' => $this->helper('adminhtml')->__($label),
-				'style' => 'width:100%; height:400px;',
+				'name'   => $attribute,
+				'label'  => $this->helper('adminhtml')->__($label),
+				'title'  => $this->helper('adminhtml')->__($label),
+				'style'  => 'width:100%; height:400px;',
 				'config' => $htmlConfig
 			));
 		}

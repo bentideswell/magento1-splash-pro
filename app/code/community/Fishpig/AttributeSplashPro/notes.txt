@@ -3,6 +3,9 @@
 # http://fishpig.co.uk/attribute-splash-pro.html
 ##
 
+29/12/2018 - 1.2.5.0
+- Added import feature. An example CSV file can be found at app/code/community/Fishpig/AttributeSplashPro/import-example.csv
+
 17/02/2016 - 1.2.4.11
 - Fixed 'Undefined variable: options' notice.
 

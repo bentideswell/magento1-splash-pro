@@ -153,7 +153,7 @@ class Fishpig_AttributeSplashPro_Adminhtml_SplashController extends Mage_Adminht
 		$this->_redirect('*/*');
 	}
 	
-	/**
+	/*
 	 * Retrieve the current page
 	 *
 	 * @return false|Fishpig_AttributeSplashPro_Model_Page
@@ -172,5 +172,131 @@ class Fishpig_AttributeSplashPro_Adminhtml_SplashController extends Mage_Adminht
 		}
 		
 		return false;
+	}
+	
+	/*
+	 *
+	 *
+	 *
+	 */
+	public function importAction()
+	{
+		try {
+			if (!isset($_FILES['splash_import'])) {
+				throw new Exception('Unable to find $_FILES key.');
+			}
+			
+			$file = $_FILES['splash_import'];
+			
+			if ($file['type'] !== 'text/csv') {
+				throw new Exception('Only CSV files are allowed.');
+			}
+			
+			if (!$file['tmp_name']) {
+				throw new Exception('There was an error uploading your import file.');
+			}
+			
+			$tempFile = tempnam(Mage::getBaseDir('var'), 'splash-pro-import-') . '.csv';
+
+			if (!move_uploaded_file($file['tmp_name'], $tempFile)) {
+				throw new Exception('Unable to upload Splash Pro import file.');
+			}
+
+			$f   = fopen($tempFile, 'r');
+			$csv = array();			
+			
+			while(($row = fgetcsv($f, $tempFile)) !== false) {
+				$csv[] = $row;
+			}
+			
+			fclose($f);
+			unlink($tempFile);
+			
+			if (count($csv) < 2) {
+				throw new Exception('CSV file must contain at least 2 rows (field names and data row).');
+			}
+			
+			$titles = array_shift($csv);
+			
+			foreach($csv as $key => $value) {
+				if (count($titles) !== count($value)) {
+					unset($csv[$key]);
+					continue;
+				}
+				
+				$csv[$key] = array_combine($titles, $value);
+			}
+
+			$rowsImported = $this->_import($csv);
+			
+			if ($rowsImported === 0) {
+				throw new Exception('No rows were imported.');
+			}
+			
+			if ($rowsImported === 1) {
+				Mage::getSingleton('adminhtml/session')->addSuccess($this->__('1 Splash Page was successfully imported.'));
+			}
+			else {
+				Mage::getSingleton('adminhtml/session')->addSuccess($this->__($rowsImported . ' Splash Pages were successfully imported.'));
+			}
+		}
+		catch (Exception $e) {
+			Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+		}
+		
+		return $this->_redirect('*/splash/index');
+	}
+	
+	protected function _import(array $csv)
+	{
+		$allowedFields = array(
+			'page_id',
+			'name',
+			'short_description',
+			'description',
+			'url_key',
+			'page_title',
+			'meta_description',
+			'meta_keywords',
+			'status',
+			'store_id',
+		);
+		
+		$rowsImported  = 0;
+		
+		foreach($csv as $row) {
+			$page = Mage::getModel('splash/page');
+
+			if (!empty($row['page_id'])) {
+				if (!$page->load((int)$row['page_id'])->getId()) {
+					continue;
+				}
+			}
+			
+			$requiresSave = false;
+			
+			foreach($row as $k => $v) {
+				if (!in_array($k, $allowedFields)) {
+					continue;
+				}
+				
+				if ($v !== '') {
+					$requiresSave = true;
+					if ($k === 'store_id') {
+						$page->setStores(explode(',', trim($v, ',')));
+					}
+					else {
+						$page->setData($k, $v);
+					}
+				}
+			}
+			
+			if ($requiresSave) {
+				$page->save();
+				$rowsImported++;
+			}
+		}
+		
+		return $rowsImported;
 	}
 }
