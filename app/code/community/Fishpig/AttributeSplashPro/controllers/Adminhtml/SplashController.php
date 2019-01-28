@@ -188,7 +188,7 @@ class Fishpig_AttributeSplashPro_Adminhtml_SplashController extends Mage_Adminht
 			
 			$file = $_FILES['splash_import'];
 			
-			if ($file['type'] !== 'text/csv') {
+			if (!in_array($file['type'], array('application/vnd.ms-excel', 'text/csv'))) {
 				throw new Exception('Only CSV files are allowed.');
 			}
 			
