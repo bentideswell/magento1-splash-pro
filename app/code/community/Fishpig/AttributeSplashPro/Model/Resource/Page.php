@@ -118,7 +118,7 @@ class Fishpig_AttributeSplashPro_Model_Resource_Page extends Mage_Core_Model_Res
 			->setStoreId($storeId);
 
 		if (is_array($optionFilters = $page->getOptionFilters())) {
-			if (isset($optionFilters['__is_new'])) {
+			if (isset($optionFilters['__is_new']['value']) && (int)$optionFilters['__is_new']['value'] === 1) {
 				$todayDate = Mage::app()->getLocale()->date()->toString(Varien_Date::DATETIME_INTERNAL_FORMAT);
 				
 				$products ->addAttributeToFilter('news_from_date', array('date' => true, 'to' => $todayDate))
@@ -126,10 +126,11 @@ class Fishpig_AttributeSplashPro_Model_Resource_Page extends Mage_Core_Model_Res
 						0 => array('date' => true, 'from' => $todayDate),
 						1 => array('is' => new Zend_Db_Expr('null')))
 					), 'left');
-				
-				unset($optionFilters['__is_new']);
 			}
 			
+			// This isn't a real attribute so unset it
+			unset($optionFilters['__is_new']);
+							
 			foreach($optionFilters as $attribute => $data) {
 				$values = (array)$data['value'];
 				$operator = isset($data['operator']) ? $data['operator'] : self::FILTER_OPERATOR_DEFAULT;

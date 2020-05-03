@@ -26,9 +26,16 @@ class Fishpig_AttributeSplashPro_Block_Adminhtml_Page_Edit_Tab_OptionFilters ext
 			Mage::getModel('eav/entity_attribute')
 				->setAttributeCode('__is_new')
 				->setFrontendLabel('New Products')
-				->setFrontendInput('select')
-				->setSourceModel(new Varien_Object(array('all_options' => array(array('value' => 1, 'label' => 'Yes')))))
-		);
+				->setFrontendInput('boolean')
+				->setSourceModel(
+				    new Varien_Object(
+				        array('all_options' => array(
+    				        array('value' => 0, 'label' => 'All Products'),
+    				        array('value' => 1, 'label' => 'Only New Products')
+				        ))
+                    )
+                )
+        );
 
 		foreach(Mage::getResourceModel('splash/page')->getSplashableAttributes() as $attribute) {
 			$attributes[] = $attribute;
@@ -57,7 +64,9 @@ class Fishpig_AttributeSplashPro_Block_Adminhtml_Page_Edit_Tab_OptionFilters ext
 				}
 
 				if ($fieldType === 'select') {
-					array_unshift($options, array('value' => '', 'label' => ''));
+    				if ($attribute->getAttributeCode() !== '__is_new') {
+    					array_unshift($options, array('value' => '', 'label' => ''));
+    				}
 					
 					$fieldType = 'asp_select';
 					

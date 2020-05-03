@@ -3,6 +3,9 @@
 # http://fishpig.co.uk/attribute-splash-pro.html
 ##
 
+03/05/2020 - 1.2.5.4
+- Improved the New Products filter to make it clearer what it does and how it works in the Admin.
+
 29/12/2018 - 1.2.5.0
 - Added import feature. An example CSV file can be found at app/code/community/Fishpig/AttributeSplashPro/import-example.csv
 
