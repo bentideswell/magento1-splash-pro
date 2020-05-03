@@ -30,7 +30,7 @@ class Fishpig_AttributeSplashPro_Block_Adminhtml_Page_Edit_Tab_OptionFilters ext
 				->setSourceModel(
 				    new Varien_Object(
 				        array('all_options' => array(
-    				        array('value' => 0, 'label' => 'All Products'),
+    				        array('value' => '', 'label' => 'All Products'),
     				        array('value' => 1, 'label' => 'Only New Products')
 				        ))
                     )

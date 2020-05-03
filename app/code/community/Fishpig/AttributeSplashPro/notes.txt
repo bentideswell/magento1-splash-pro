@@ -3,7 +3,7 @@
 # http://fishpig.co.uk/attribute-splash-pro.html
 ##
 
-03/05/2020 - 1.2.5.4
+03/05/2020 - 1.2.5.5
 - Improved the New Products filter to make it clearer what it does and how it works in the Admin.
 
 29/12/2018 - 1.2.5.0
